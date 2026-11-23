@@ -36,6 +36,23 @@ export async function onRequest(context: { request: Request }) {
       if (upstream.ok) {
         const data = await upstream.json();
         if (data && Array.isArray(data.formats) && data.formats.length > 0) {
+          // Do not advertise a quality unless the upstream response contains
+          // a real direct stream for it. AI Studio may expose a 1080p label
+          // while its resolver falls back to YouTube itag 18 (360p).
+          const verifiedFormats = data.formats
+            .filter((format: any) => format?.directUrl || format?.rawUrl)
+            .map((format: any) => {
+              const directUrl = format.directUrl || format.rawUrl || '';
+              const itag = Number(new URL(directUrl, 'https://sahr-altahmeel.ai.studio').searchParams.get('itag') || 0);
+              if (itag === 18) {
+                return { ...format, quality: '360p', height: 360 };
+              }
+              return format;
+            });
+          data.formats = verifiedFormats;
+          if (verifiedFormats.length === 0) {
+            throw new Error('لم يتم العثور على جودة تنزيل مؤكدة');
+          }
           return new Response(JSON.stringify(data), {
             status: 200,
             headers: { 'Content-Type': 'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*' },

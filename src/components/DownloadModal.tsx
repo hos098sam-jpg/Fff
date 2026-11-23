@@ -64,11 +64,12 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
     isAudio: boolean,
     videoId: string,
     title: string,
+    requestedFormat: string,
     onProgress?: (pct: number) => void
   ): Promise<string> => {
     const candidateUrls = [
       primaryUrl,
-      `/api/download-direct?videoId=${encodeURIComponent(videoId)}&format=${isAudio ? 'mp3' : '360'}&title=${encodeURIComponent(title)}&ext=${isAudio ? 'mp3' : 'mp4'}`,
+      `/api/download-direct?videoId=${encodeURIComponent(videoId)}&format=${isAudio ? 'mp3' : requestedFormat}&title=${encodeURIComponent(title)}&ext=${isAudio ? 'mp3' : 'mp4'}`,
     ];
     if (fallbackRawUrl && fallbackRawUrl.startsWith('http')) {
       candidateUrls.push(fallbackRawUrl);
@@ -292,7 +293,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
 
     if (directDownloadUrl) {
       try {
-        const blobUrl = await fetchVerifiedMediaBlob(directDownloadUrl, rawStreamUrl, isAudio, videoData.id, videoData.title);
+        const blobUrl = await fetchVerifiedMediaBlob(directDownloadUrl, rawStreamUrl, isAudio, videoData.id, videoData.title, format.quality.replace(/\D/g, '') || '360');
         setCachedBlobUrl(blobUrl);
         triggerDirectBrowserSave(blobUrl, fileName);
       } catch (e) {
