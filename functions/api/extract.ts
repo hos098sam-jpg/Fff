@@ -23,6 +23,27 @@ export async function onRequest(context: { request: Request }) {
       return new Response(JSON.stringify({ error: 'تعذر العثور على معرّف الفيديو' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
+    // AI Studio is the primary extractor for this project and returns the
+    // complete list of available video/audio qualities. Keep the local
+    // Cloudflare/Piped implementation below as a fallback.
+    try {
+      const upstream = await fetch('https://sahr-altahmeel.ai.studio/api/extract', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ url: `https://www.youtube.com/watch?v=${videoId}` }),
+        signal: AbortSignal.timeout(90000),
+      });
+      if (upstream.ok) {
+        const data = await upstream.json();
+        if (data && Array.isArray(data.formats) && data.formats.length > 0) {
+          return new Response(JSON.stringify(data), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*' },
+          });
+        }
+      }
+    } catch {}
+
     // Fetch from Piped API
     const pipedInstances = ['https://api.piped.private.coffee', 'https://pipedapi.kavin.rocks', 'https://pipedapi.leptons.xyz'];
     let videoData: any = null;
