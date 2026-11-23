@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ais-pre-3shdpnkbumvwgb2e6bb5ff-514857695585.europe-west2.run.app/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ais-pre-3shdpnkbumvwgb2e6bb5ff-514857695585.europe-west2.run.app/logo.png</image:loc>
+      <image:title>شعار سحر التحميل - موقع سحر التحميل الرسمي</image:title>
+      <image:caption>موقع وتطبيق سحر التحميل لتحميل واستخراج مقاطع وفيديوهات وصوتيات اليوتيوب للمطور حسام أحمد مساعد</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ais-pre-3shdpnkbumvwgb2e6bb5ff-514857695585.europe-west2.run.app/?source=pwa</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

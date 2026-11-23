@@ -1,0 +1,60 @@
+{
+  "siteTitle": "سحر التحميل - استخراج وتحميل فيديوهات اليوتيوب والصوتيات",
+  "siteSubtitle": "ابحث عن أي فيديو، أنشودة، أو بودكاست، أو الصق رابط يوتيوب لتحميله مباشرة بجميع الجودات (1080p, 720p, MP3) - الصق الرابط وسيب السحر علينا!",
+  "authorName": "حسام أحمد مساعد",
+  "authorBadge": "HAM",
+  "logoUrl": "/logo.png",
+  "authorImageUrl": "/author.jpg",
+  "banner": {
+    "enabled": false,
+    "text": "مرحباً بكم في سحر التحميل! تم تحديث خوادم التحميل بأعلى سرعة وجودة.",
+    "type": "info",
+    "link": ""
+  },
+  "badges": [
+    {
+      "id": "1",
+      "text": "البحث الذكي & التحميل السريع",
+      "icon": "wand",
+      "enabled": true
+    },
+    {
+      "id": "2",
+      "text": "نتائج فورية مثل يوتيوب تماماً",
+      "icon": "zap",
+      "enabled": true
+    },
+    {
+      "id": "3",
+      "text": "بدون إعلانات مزعجة",
+      "icon": "shield",
+      "enabled": true
+    }
+  ],
+  "invidiousInstances": [
+    "https://invidious.f5.si",
+    "https://inv.tux.pizza",
+    "https://invidious.nerdvpn.de",
+    "https://vid.puffyan.us",
+    "https://invidious.drgns.space",
+    "https://yt.artemislena.eu",
+    "https://invidious.jing.rocks",
+    "https://iv.melmac.space",
+    "https://invidious.private.coffee"
+  ],
+  "pipedInstances": [
+    "https://api.piped.private.coffee",
+    "https://pipedapi.kavin.rocks",
+    "https://pipedapi.leptons.xyz"
+  ],
+  "cobaltInstances": [
+    "https://api.cobalt.tools"
+  ],
+  "directAdUrl": "",
+  "directAdEnabled": false,
+  "maintenanceMode": false,
+  "maintenanceMessage": "الموقع يخضع لأعمال صيانة وتحديثات دورية لتحسين سرعة التنزيل. سنعود خلال دقائق!",
+  "defaultFormat": "1080p",
+  "adminPin": "2027",
+  "lastUpdated": 1789626772997
+}
